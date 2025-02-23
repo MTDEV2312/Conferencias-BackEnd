@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import auth from './routers/auth_routers.js'
 
 
 // Inicializaciones
@@ -25,6 +26,7 @@ app.get('/',(req,res)=>{
     res.send('Server on 👨‍💻✅');
 })
 
+app.use('/api/',auth)
 
 
 //Rutas no encontradas
