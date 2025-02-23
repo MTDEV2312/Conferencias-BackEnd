@@ -115,7 +115,7 @@ const UpdateSpeaker = async (req,res) => {
 const DeleteSpeaker = async (req,res) => {
     const {id} = req.params
     if(!id){
-        return res.status(400).json({msg: "Lo sentimos, debes proporcionar un id de Pacientes"})
+        return res.status(400).json({msg: "Lo sentimos, debes proporcionar un id de Auditorios"})
     }
 
     try {

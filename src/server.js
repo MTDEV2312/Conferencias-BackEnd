@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import auth from './routers/auth_routers.js'
 import speaker from './routers/speaker_routes.js'
+import auditorium from './routers/auditorium_routers.js'
 
 
 // Inicializaciones
@@ -29,6 +30,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api/',auth)
 app.use('/api/',speaker)
+app.use('/api/',auditorium)
 
 
 //Rutas no encontradas
