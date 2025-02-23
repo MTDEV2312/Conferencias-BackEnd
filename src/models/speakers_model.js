@@ -53,6 +53,6 @@ const speakersSchema = new Schema({
         trim:true,
         required:true
     }
-})
+},{timestamps:true})
 
 export default model("Speakers",speakersSchema)

@@ -24,6 +24,6 @@ const bookingSchema = new Schema({
         trim:true,
         required:true
     }
-})
+},{timestamps:true})
 
 export default model('bookings',bookingSchema)
