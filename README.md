@@ -81,35 +81,34 @@ npm start
 ### Autenticación
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| POST | `/api/auth/register` | Registrar nuevo usuario |
 | POST | `/api/auth/login` | Iniciar sesión |
 
 ### Auditorios
 | Método | Ruta | Descripción |
 |--------|------|-------------|
-| GET | `/api/auditoriums` | Listar todos los auditorios |
-| GET | `/api/auditoriums/:id` | Obtener detalles de un auditorio |
-| POST | `/api/auditoriums` | Crear nuevo auditorio |
-| PUT | `/api/auditoriums/:id` | Actualizar auditorio |
-| DELETE | `/api/auditoriums/:id` | Eliminar auditorio |
+| GET | `/api/auditorium` | Listar todos los auditorios |
+| GET | `/api/auditorium/:id` | Obtener detalles de un auditorio |
+| PATCH | `/api/auditorium/register` | Crear nuevo auditorio |
+| PUT | `/api/auditorium/update/:id` | Actualizar auditorio |
+| DELETE | `/api/auditorium/delete/:id` | Eliminar auditorio |
 
 ### Ponentes
 | Método | Ruta | Descripción |
 |--------|------|-------------|
 | GET | `/api/speakers` | Listar todos los ponentes |
 | GET | `/api/speakers/:id` | Obtener detalles de un ponente |
-| POST | `/api/speakers` | Crear nuevo ponente |
-| PUT | `/api/speakers/:id` | Actualizar ponente |
-| DELETE | `/api/speakers/:id` | Eliminar ponente |
+| POST | `/api/speakers/register` | Crear nuevo ponente |
+| PATCH | `/api/speakers/update/:id` | Actualizar ponente |
+| DELETE | `/api/speakers/delete/:id` | Eliminar ponente |
 
 ### Reservas
 | Método | Ruta | Descripción |
 |--------|------|-------------|
 | GET | `/api/bookings` | Listar todas las reservas |
 | GET | `/api/bookings/:id` | Obtener detalles de una reserva |
-| POST | `/api/bookings` | Crear nueva reserva |
-| PUT | `/api/bookings/:id` | Actualizar reserva |
-| DELETE | `/api/bookings/:id` | Eliminar reserva |
+| POST | `/api/bookings/register` | Crear nueva reserva |
+| PATCH | `/api/bookings/update/:id` | Actualizar reserva |
+| DELETE | `/api/bookings/delete/:id` | Eliminar reserva |
 
 ## ⚙️ Funcionalidades Principales
 
