@@ -60,9 +60,10 @@ const UpdateAuditoriumValidator = [
 ]
 
 const DeleteAuditoriumValidation = [
-    param('codigo')
+    param('id')
         .trim()
-        .notEmpty().withMessage("El codigo es requerido")
+        .notEmpty().withMessage('El id es requerido')
+        .isMongoId().withMessage('El id no es valido')
 ]
 
 export {
