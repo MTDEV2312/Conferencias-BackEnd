@@ -37,19 +37,23 @@ const UpdateAuditoriumValidator = [
         .notEmpty().withMessage('El id es requerido')
         .isMongoId().withMessage('El id no es valido'),
     body('nombre')
+        .optional()
         .trim()
         .notEmpty().withMessage("El nombre es requerido")
         .matches(singleNameRegex).withMessage("El nombre dolo se acepta letras y espacios")
         .isLength({min:5}).withMessage("Deben ser mas de 5 caracteres"),
     body('descripcion')
+        .optional()
         .trim()
         .notEmpty().withMessage("La descripcion es requerida")
         .isLength({min:10,max:500}).withMessage("Minimo de 10 caracteres maximo 500 caracteres"),
     body('ubicacion')
+        .optional()
         .trim()
         .notEmpty().withMessage("La ubicacion es requerida")
         .isLength({min:10,max:150}).withMessage("Minimo de 10 caracteres maximo 150 caracteres"),
     body('capacidad')
+        .optional()
         .trim()
         .notEmpty().withMessage("La capacidad es requerida")
         .isNumeric().withMessage("Solo se aceptan numeros")

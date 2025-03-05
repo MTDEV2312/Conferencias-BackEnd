@@ -113,35 +113,42 @@ const UpdateSpeakerValidator = [
         .notEmpty().withMessage('El id es requerido')
         .isMongoId().withMessage('El id no es valido'),
     body('nombre')
+        .optional()
         .trim()
         .notEmpty().withMessage('El nombre es requerido')
         .matches(singleNameRegex).withMessage('El nombre debe ser solo letras')
         .isLength({min:3,max:20}).withMessage('El nombre debe tener al menos 3 caracteres y 20 caracteres'),
     body('apellido')
+        .optional()
         .trim()
         .notEmpty().withMessage('El apellido es requerido')
         .matches(singleNameRegex).withMessage('El apellido debe ser solo letras')
         .isLength({min:3,max:20}).withMessage('El apellido debe tener al menos 3 caracteres y 20 caracteres'),
     body('email')
+        .optional()
         .trim()
         .notEmpty().withMessage('El email es requerido')
         .isEmail().withMessage('El email no es valido')
         .matches(regexEmail).withMessage('Formato de email inválido'),
     body('fecha_nacimiento')
+        .optional()
         .trim()
         .notEmpty().withMessage('La fecha de nacimiento es requerida')
         .isDate().withMessage('La fecha de nacimiento no es valida'),
     body('genero')
+        .optional()
         .trim()
         .notEmpty().withMessage('El genero es requerido')
         .isAlpha().withMessage('El genero debe ser solo letras')
         .isLength({min:1,max:1}).withMessage('El genero debe tener solo un caracter')
         .isIn(['M','F']).withMessage('El genero debe ser M o F'),
     body('direccion')
+        .optional()
         .trim()
         .notEmpty().withMessage('La dirección es requerida')
         .isLength({min:8, max:50}).withMessage('La dirección debe tener al menos 10 caracteres'),
     body('telefono')
+        .optional()
         .trim()
         .notEmpty().withMessage('El telefono es requerido')
         .isNumeric().withMessage('El telefono debe ser un número')
@@ -154,11 +161,13 @@ const UpdateSpeakerValidator = [
             return true
         }),
     body('empresa')
+        .optional()
         .trim()
         .notEmpty().withMessage("El nombre de la empresa es requerida")
         .isLength({min:2}).withMessage("El nombre de la empresa deben ser minimo 2 caracteres")
         .isAlphanumeric().withMessage("el nombre debe ser alphanumerico"),
     body('ciudad')
+        .optional()
         .trim()
         .notEmpty().withMessage("La ciudad es requerida")
         .isLength({min:3}).withMessage("La ciudad deben ser minimo 3 caracteres")
