@@ -124,43 +124,47 @@ npm start
 ### Usuario
 ```json
 {
-"name": "String (requerido)",
+"nombre": "String (requerido)",
+"apellido": "String (requerido)",
 "email": "String (requerido, único)",
 "password": "String (encriptado, requerido)",
-"role": "String (default: 'user')"
 }
 ```
 
 ### Auditorio
 ```json
 {
-"name": "String (requerido)",
-"location": "String (requerido)",
-"capacity": "Number (requerido)",
-"description": "String"
+"codigo": "String (requerido)",
+"nombre": "String (requerido)",
+"ubicacion": "String (requerido)",
+"capacidad": "Number (requerido)",
+"descripcion": "String"
 }
 ```
 
 ### Ponente
 ```json
 {
-"name": "String (requerido)",
-"specialty": "String (requerido)",
-"bio": "String",
-"contact": "String"
+"nombre": "String (requerido)",
+"apellido": "String (requerido)",
+"cedula": "String (requerido)",
+"genero":"M O F",
+"ciudad":"String (requerido)",
+"direccion":"String (requerido)",
+"fecha_nacimiento":"Date (requerido)",
+"telefono":"String (requerido)",
+"email": "String (requerido, único)",
+"empresa":"String (requerido)"
 }
 ```
 
 ### Reserva
 ```json
 {
-"auditorium": "ObjectId (ref a Auditorio)",
-"startDate": "Date (requerido)",
-"endDate": "Date (requerido)",
-"title": "String (requerido)",
-"description": "String",
-"speaker": "ObjectId (ref a Ponente)",
-"createdBy": "ObjectId (ref a Usuario)"
+"codigo":"String (requerido)",
+"descripcion":"String (requerido)",
+"auditorio":"clave foranea String (requerido)",
+"conferencista":"clave foranea String (requerido)"
 }
 ```
 
