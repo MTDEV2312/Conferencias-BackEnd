@@ -36,10 +36,12 @@ const UpdateBookingValidation = [
         .notEmpty().withMessage('El id es requerido')
         .isMongoId().withMessage('El id no es valido'),
     body('descripcion')
+        .optional()
         .trim()
         .notEmpty().withMessage("La descripcion es requerida")
         .isLength({min:10,max:500}).withMessage("La descripcion debe tener min 10 y max 500 caracteres"),
     body('auditorio')
+        .optional()
         .trim()
         .notEmpty().withMessage("El codigo del auditorio es requerido")
 ]
