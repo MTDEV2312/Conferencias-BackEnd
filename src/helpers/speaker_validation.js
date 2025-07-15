@@ -2,7 +2,7 @@ import {body, param} from 'express-validator'
 import { isCedula } from 'validator-ec';
 
 const regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-const singleNameRegex = /^[A-Za-zÁáÉéÍíÓóÚúÑñ]+$/;
+const singleNameRegex = /^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/;
 
 const validateEcuadorianPhone = (phone) => {
     // Convertir a string y limpiar el número
@@ -32,14 +32,8 @@ const RegisterSpeakerValidator =[
     body('cedula')
         .trim()
         .notEmpty().withMessage('La cedula es requerida')
-        .isLength({min:10}).withMessage('La cedula debe tener al menos 10 caracteres')
-        .isNumeric().withMessage('La cedula debe ser un número')
-        .custom((value)=>{
-            if(!isCedula(value)){
-                throw new Error('Cédula ecuatoriana inválida')
-            }
-            return true
-        }),
+        .isLength({min:10,max:10}).withMessage('La cedula debe tener exactamente 10 caracteres')
+        .isNumeric().withMessage('La cedula debe ser un número'),
     body('nombre')
         .trim()
         .notEmpty().withMessage('El nombre es requerido')
@@ -73,24 +67,16 @@ const RegisterSpeakerValidator =[
         .trim()
         .notEmpty().withMessage('El telefono es requerido')
         .isNumeric().withMessage('El telefono debe ser un número')
-        .isLength({min:10,max:10}).withMessage('El telefono debe tener 10 caracteres')
-        .custom((phone) =>{
-            const isValid = validateEcuadorianPhone(phone);
-            if(!isValid){
-                throw new Error('Número de teléfono ecuatoriano inválido')
-            }
-            return true
-        }),
+        .isLength({min:10,max:10}).withMessage('El telefono debe tener 10 caracteres'),
     body('empresa')
         .trim()
         .notEmpty().withMessage("El nombre de la empresa es requerida")
-        .isLength({min:2}).withMessage("El nombre de la empresa deben ser minimo 2 caracteres")
-        .isAlphanumeric().withMessage("el nombre debe ser alphanumerico"),
+        .isLength({min:2}).withMessage("El nombre de la empresa deben ser minimo 2 caracteres"),
     body('ciudad')
         .trim()
         .notEmpty().withMessage("La ciudad es requerida")
         .isLength({min:3}).withMessage("La ciudad deben ser minimo 3 caracteres")
-        .isAlpha().withMessage("Solo se aceptan letras")
+        .matches(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/).withMessage("Solo se aceptan letras y espacios")
 ]
 
 const GetSpeakerByIdValidator = [
@@ -152,26 +138,18 @@ const UpdateSpeakerValidator = [
         .trim()
         .notEmpty().withMessage('El telefono es requerido')
         .isNumeric().withMessage('El telefono debe ser un número')
-        .isLength({min:10,max:10}).withMessage('El telefono debe tener 10 caracteres')
-        .custom((phone) =>{
-            const isValid = validateEcuadorianPhone(phone);
-            if(!isValid){
-                throw new Error('Número de teléfono ecuatoriano inválido')
-            }
-            return true
-        }),
+        .isLength({min:10,max:10}).withMessage('El telefono debe tener 10 caracteres'),
     body('empresa')
         .optional()
         .trim()
         .notEmpty().withMessage("El nombre de la empresa es requerida")
-        .isLength({min:2}).withMessage("El nombre de la empresa deben ser minimo 2 caracteres")
-        .isAlphanumeric().withMessage("el nombre debe ser alphanumerico"),
+        .isLength({min:2}).withMessage("El nombre de la empresa deben ser minimo 2 caracteres"),
     body('ciudad')
         .optional()
         .trim()
         .notEmpty().withMessage("La ciudad es requerida")
         .isLength({min:3}).withMessage("La ciudad deben ser minimo 3 caracteres")
-        .isAlpha().withMessage("Solo se aceptan letras")
+        .matches(/^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/).withMessage("Solo se aceptan letras y espacios")
 ]
 
 const DeleteSpeakerValidator = [

@@ -15,14 +15,8 @@ const RegisterBookingValidation = [
     body('conferencistas')
         .trim()
         .notEmpty().withMessage('La cedula es requerida')
-        .isLength({min:10}).withMessage('La cedula debe tener al menos 10 caracteres')
+        .isLength({min:10,max:10}).withMessage('La cedula debe tener exactamente 10 caracteres')
         .isNumeric().withMessage('La cedula debe ser un número')
-        .custom((value)=>{
-            if(!isCedula(value)){
-                throw new Error('Cédula ecuatoriana inválida')
-            }
-            return true
-        })
 ]
 
 const GetBookingByIdValidation = [

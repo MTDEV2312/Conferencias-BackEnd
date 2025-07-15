@@ -1,6 +1,6 @@
 import {body,param} from 'express-validator'
 
-const singleNameRegex = /^[A-Za-zÁáÉéÍíÓóÚúÑñ]+$/;
+const singleNameRegex = /^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$/;
 
 const RegisterAuditoriumValidator = [
     body('codigo')
